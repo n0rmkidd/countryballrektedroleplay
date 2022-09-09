@@ -27,10 +27,12 @@ end
 end
 end)
 trol:AddSwitch("Give Btools (Need 150 coins)", function(on)
+    if on == true then
        local args = {
     [1] = game:GetService("ReplicatedStorage").Tools.Btools,
     [2] = game:GetService("ReplicatedStorage").Tools.Burger.Cost
 }
 
 game:GetService("ReplicatedStorage").BuyTool:InvokeServer(unpack(args))
+end
 end)
