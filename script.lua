@@ -16,23 +16,19 @@ local Window = library:AddWindow(name, WindowOptions)
 local trol = Window:AddTab("main")
 
 local Box = trol:AddTextBox("Name All", nil, {["clear"] = false})
-trol:AddSwitch("Name All", function(on)
+trol:AddButton("Name All", function()
     local text = Box.Text
-    if on == true then
         for i,v in pairs(game.Workspace:GetDescendants()) do
     if v:IsA("RemoteEvent") and v.Parent.ClassName == "Model" and v.Parent.Parent.ClassName == "Model" then
         v:FireServer(text)
     end
 end
-end
 end)
-trol:AddSwitch("Give Btools (Need 150 coins)", function(on)
-    if on == true then
+trol:AddButton("Give Btools (Need 150 coins)", function()
        local args = {
     [1] = game:GetService("ReplicatedStorage").Tools.Btools,
     [2] = game:GetService("ReplicatedStorage").Tools.Burger.Cost
 }
 
 game:GetService("ReplicatedStorage").BuyTool:InvokeServer(unpack(args))
-end
 end)
